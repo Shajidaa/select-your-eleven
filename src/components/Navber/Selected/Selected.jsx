@@ -6,9 +6,12 @@ const Selected = ({addPlayer,removeCard}) => {
     
     return (
        <>
-        <div className='max-w-7xl mx-auto flex justify-between items-center'>
+       
+    <div className='max-w-7xl mx-auto flex flex-col gap-2'>
 {addPlayer.map(player=><SelectedCard removeCard={removeCard} player={player}></SelectedCard>)}
         </div>
+    
+    
        
        </>
     );

@@ -1,10 +1,23 @@
 
 import { Suspense, useState } from 'react'
 import './App.css'
-import Toastify from 'toastify-js'
+import { ToastContainer } from 'react-toastify'
 import Available from './components/Navber/AvailablePlayer/Available'
 import Navbar from './components/Navber/Navbar'
 import Selected from './components/Navber/Selected/Selected'
+
+const Spinner = () => {
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <div className="flex flex-row gap-2">
+        <div className="w-4 h-4 rounded-full bg-[#E7FE29]  animate-bounce"></div>
+        <div className="w-4 h-4 rounded-full bg-[#E7FE29]  animate-bounce [animation-delay:-.3s]"></div>
+        <div className="w-4 h-4 rounded-full bg-[#E7FE29] animate-bounce [animation-delay:-.5s]"></div>
+      </div>
+    </div>
+  );
+};
+
 
 const fetchPlayers=async ()=>{
         const res= await fetch('./players.json')
@@ -28,7 +41,7 @@ const removeCard=(p)=>{
   return (
     <>
 <Navbar availableBalance={availableBalance}></Navbar>
-<div className='max-w-7xl  font-bold mx-auto flex justify-between items-center '>
+<div className='max-w-7xl  mt-5 mb-5 font-bold mx-auto flex justify-between items-center '>
 <h1 className='text-4xl'>{toggole===true ?'Available Players':`Selected Players (${addPlayer.length}/6)`}</h1>
 <div className="join">
   <button onClick={()=>{
@@ -41,23 +54,23 @@ const removeCard=(p)=>{
 </div>
 </div>
 {
-  toggole ===true?<Suspense fallback={<p>Loading................</p>}>
+  toggole ===true?<Suspense fallback={Spinner()}>
 <Available availableBalance={availableBalance}
  setAvailableBalance={setAvailableBalance}
   playersPromise={playersPromise } 
   addPlayer={addPlayer}
   setAddPlayer={setAddPlayer}
   ></Available> </Suspense>:
-  <Suspense fallback={<p>Loading................</p>}>
+  <Suspense fallback={Spinner()}>
     
      <Selected removeCard={removeCard} addPlayer={addPlayer}
   ></Selected>
     
      </Suspense>
 }
-{/* < Toastify></Toastify> */}
+   <ToastContainer />
     </>
   )
 }
-
+// export default Spinner;
 export default App

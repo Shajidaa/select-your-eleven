@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const Player = ({player,setAvailableBalance,availableBalance,addPlayer,setAddPlayer}) => {
     const [isSelected,setIsSelected]=useState(false)
@@ -8,14 +9,15 @@ const Player = ({player,setAvailableBalance,availableBalance,addPlayer,setAddPla
     const handleSelected=(playerData)=>{
       const playerPrice=parseInt(playerData.price.split('Cr').join('').split('৳').join(''));
       if (availableBalance<playerPrice) {
-        return alert(`Not enough coins`)
+        return toast(`Not enough coins`)
       }if (addPlayer.length ===6) {
-        return alert(`already add 6 players`)
+        return toast(`already add 6 players`)
       }
       
      
-      
+
         setIsSelected(true),
+            toast(`You've selected ${player.player_name}`)
     setAvailableBalance(availableBalance-playerPrice);
     setAddPlayer([...addPlayer,playerData])
 
@@ -23,9 +25,9 @@ const Player = ({player,setAvailableBalance,availableBalance,addPlayer,setAddPla
     return (
               <div className="card p-2 rounded-2xl w-96 shadow-sm">
          <figure>
-    <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes" />
+    <img className='w-[368px] h-[320px] object-cover '
+      src={player.player_image}
+      alt="Player name" />
      </figure>
      <div className="card-body">
       <h2 className="card-title"> <span>{player.player_name}</span></h2>
