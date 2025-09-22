@@ -10,9 +10,9 @@ const Spinner = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="flex flex-row gap-2">
-        <div className="w-4 h-4 rounded-full bg-[#E7FE29]  animate-bounce"></div>
-        <div className="w-4 h-4 rounded-full bg-[#E7FE29]  animate-bounce [animation-delay:-.3s]"></div>
-        <div className="w-4 h-4 rounded-full bg-[#E7FE29] animate-bounce [animation-delay:-.5s]"></div>
+        <div className="w-4 h-4 rounded-full bg-[#0f591b]  animate-bounce"></div>
+        <div className="w-4 h-4 rounded-full bg-[#0f591b]  animate-bounce [animation-delay:-.3s]"></div>
+        <div className="w-4 h-4 rounded-full bg-[#0f591b] animate-bounce [animation-delay:-.5s]"></div>
       </div>
     </div>
   );
@@ -41,7 +41,7 @@ const removeCard=(p)=>{
   return (
     <>
 <Navbar availableBalance={availableBalance}></Navbar>
-<div className='max-w-7xl  mt-5 mb-5 font-bold mx-auto flex justify-between items-center '>
+<div className='max-w-7xl  p-3 lg:p-5  mt-5 mb-5 font-bold mx-auto flex justify-between items-center '>
 <h1 className='text-4xl'>{toggole===true ?'Available Players':`Selected Players (${addPlayer.length}/6)`}</h1>
 <div className="join">
   <button onClick={()=>{

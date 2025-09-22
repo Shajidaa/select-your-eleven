@@ -23,9 +23,9 @@ const Player = ({player,setAvailableBalance,availableBalance,addPlayer,setAddPla
 
     }
     return (
-              <div className="card p-2 rounded-2xl w-96 shadow-sm">
+              <div className="card p-3 lg:p-5 rounded-2xl max-w-96 shadow-sm">
          <figure>
-    <img className='w-[368px] h-[320px] object-cover '
+    <img className='w-[368px]  h-[320px] object-cover '
       src={player.player_image}
       alt="Player name" />
      </figure>
