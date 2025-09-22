@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Player = ({player}) => {
+const Player = ({player,setAvailableBalance,availableBalance}) => {
+    const [isSelected,setIsSelected]=useState(false)
+    const handleSelected=(playerData)=>{
+      const playerPrice=parseInt(playerData.price.split('Cr').join('').split('৳').join(''));
+      if (availableBalance<playerPrice) {
+        return alert(`Not enough coins`)
+      }
+setIsSelected(true),
+// console.log(playerData);
+
+          setAvailableBalance(availableBalance-playerPrice)
+    }
     return (
               <div className="card p-2 rounded-2xl w-96 shadow-sm">
          <figure>
@@ -19,9 +30,10 @@ const Player = ({player}) => {
         <h4 className='text-black'>Left-Hand-Bat</h4>
         <h4 className='text-gray-500'>Left-Hand-Bat</h4>
       </div>
-      <div className="card-actions flex justify-between items-center  ">
+      <div  className="card-actions flex justify-between items-center  ">
         <p>Price: {player.price}</p>
-       <button className="btn ">Choose Player</button>
+       <button disabled={isSelected} className="btn "
+         onClick={()=>{handleSelected(player)} }> {isSelected===true?'Selected':'Choose Player'} </button>
       </div>
     </div>
     </div>

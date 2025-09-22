@@ -8,13 +8,14 @@ const fetchPlayers=async ()=>{
         const res= await fetch('./players.json')
         return res.json();
 }
-
-function App() {
 const playersPromise=fetchPlayers()
+function App() {
+
 const [toggole,setToggole]=useState(true)
+const [availableBalance,setAvailableBalance]=useState(60000)
   return (
     <>
-<Navbar></Navbar>
+<Navbar availableBalance={availableBalance}></Navbar>
 <div className='max-w-7xl  font-bold mx-auto flex justify-between items-center '>
 <h1 className='text-4xl'>Available Players</h1>
 <div className="join">
@@ -26,8 +27,8 @@ const [toggole,setToggole]=useState(true)
 </div>
 </div>
 {
-  toggole ===true?<Suspense>
-<Available playersPromise={playersPromise}></Available> </Suspense>:<Suspense></Suspense>
+  toggole ===true?<Suspense fallback={<p>Loading................</p>}>
+<Available availableBalance={availableBalance} setAvailableBalance={setAvailableBalance} playersPromise={playersPromise } ></Available> </Suspense>:<Suspense></Suspense>
 }
 
 
