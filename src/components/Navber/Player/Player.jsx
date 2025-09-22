@@ -9,13 +9,16 @@ const Player = ({player,setAvailableBalance,availableBalance,addPlayer,setAddPla
       const playerPrice=parseInt(playerData.price.split('Cr').join('').split('৳').join(''));
       if (availableBalance<playerPrice) {
         return alert(`Not enough coins`)
-      }else{
+      }if (addPlayer.length ===6) {
+        return alert(`already add 6 players`)
+      }
+      
+     
       
         setIsSelected(true),
     setAvailableBalance(availableBalance-playerPrice);
     setAddPlayer([...addPlayer,playerData])
-      }
- 
+
     }
     return (
               <div className="card p-2 rounded-2xl w-96 shadow-sm">

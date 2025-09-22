@@ -1,6 +1,7 @@
 
 import { Suspense, useState } from 'react'
 import './App.css'
+import Toastify from 'toastify-js'
 import Available from './components/Navber/AvailablePlayer/Available'
 import Navbar from './components/Navber/Navbar'
 import Selected from './components/Navber/Selected/Selected'
@@ -13,7 +14,7 @@ const playersPromise=fetchPlayers()
 function App() {
 
 const [toggole,setToggole]=useState(true)
-const [availableBalance,setAvailableBalance]=useState(6000000);
+const [availableBalance,setAvailableBalance]=useState(100000000);
 const [addPlayer,setAddPlayer]=useState([]);
 // console.log(addPlayer);
 const removeCard=(p)=>{
@@ -54,6 +55,7 @@ const removeCard=(p)=>{
     
      </Suspense>
 }
+{/* < Toastify></Toastify> */}
     </>
   )
 }
