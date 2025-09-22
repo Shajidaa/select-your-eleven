@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 
-const Player = ({player,setAvailableBalance,availableBalance}) => {
+const Player = ({player,setAvailableBalance,availableBalance,addPlayer,setAddPlayer}) => {
     const [isSelected,setIsSelected]=useState(false)
+   
+   
+   
     const handleSelected=(playerData)=>{
       const playerPrice=parseInt(playerData.price.split('Cr').join('').split('৳').join(''));
       if (availableBalance<playerPrice) {
         return alert(`Not enough coins`)
+      }else{
+      
+        setIsSelected(true),
+    setAvailableBalance(availableBalance-playerPrice);
+    setAddPlayer([...addPlayer,playerData])
       }
-setIsSelected(true),
-// console.log(playerData);
-
-          setAvailableBalance(availableBalance-playerPrice)
+ 
     }
     return (
               <div className="card p-2 rounded-2xl w-96 shadow-sm">
