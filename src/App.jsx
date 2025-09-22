@@ -16,7 +16,14 @@ const [toggole,setToggole]=useState(true)
 const [availableBalance,setAvailableBalance]=useState(6000000);
 const [addPlayer,setAddPlayer]=useState([]);
 // console.log(addPlayer);
-
+const removeCard=(p)=>{
+ const filterData=addPlayer.filter(ply=>ply.player_name !== p.player_name)
+  setAddPlayer(filterData);
+//   console.log((p.price.split('Cr').join('').split('৳').join(''))
+// );
+  
+  setAvailableBalance(availableBalance+Number(p.price.split('Cr').join('').split('৳').join('')))
+}
   return (
     <>
 <Navbar availableBalance={availableBalance}></Navbar>
@@ -42,7 +49,7 @@ const [addPlayer,setAddPlayer]=useState([]);
   ></Available> </Suspense>:
   <Suspense fallback={<p>Loading................</p>}>
     
-     <Selected addPlayer={addPlayer}
+     <Selected removeCard={removeCard} addPlayer={addPlayer}
   ></Selected>
     
      </Suspense>

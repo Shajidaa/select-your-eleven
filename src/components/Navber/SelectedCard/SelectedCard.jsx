@@ -1,6 +1,9 @@
 import React from 'react';
 import logo from "../../../assets/logo.png";
-const SelectedCard = ({player}) => {
+const SelectedCard = ({player,removeCard}) => {
+    const removePlayer=()=>{
+        removeCard(player)
+    }
     return (
       <>
       
@@ -13,7 +16,7 @@ const SelectedCard = ({player}) => {
                 <p>Left -hand</p>
             </div>
             </div>
-           <div><button className='btn'> delete</button></div>
+           <div onClick={removePlayer}><button className='btn'> delete</button></div>
      
       </>
     );
