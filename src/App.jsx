@@ -42,7 +42,7 @@ const removeCard=(p)=>{
     <>
 <Navbar availableBalance={availableBalance}></Navbar>
 <div className='max-w-7xl  p-3 lg:p-5  mt-5 mb-5 font-bold mx-auto flex justify-between items-center '>
-<h1 className='text-4xl'>{toggole===true ?'Available Players':`Selected Players (${addPlayer.length}/6)`}</h1>
+<h1 className ='text-5xl'>{toggole===true ?'Available Players':`Selected Players (${addPlayer.length}/6)`}</h1>
 <div className="join">
   <button onClick={()=>{
     setToggole(true)}} className={`btn join-item ${toggole===true?"bg-orange-600":''} `}>Available</button>
